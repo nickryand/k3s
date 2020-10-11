@@ -631,7 +631,7 @@ create_env_file() {
     info "env: Creating environment file ${FILE_K3S_ENV}"
     UMASK=$(umask)
     umask 0377
-    env | grep '^K3S_' | $SUDO tee ${FILE_K3S_ENV} >/dev/null
+    env | grep '^K3S_' | $SUDO tee -a ${FILE_K3S_ENV} >/dev/null
     env | egrep -i '^(NO|HTTP|HTTPS)_PROXY' | $SUDO tee -a ${FILE_K3S_ENV} >/dev/null
     umask $UMASK
 }
